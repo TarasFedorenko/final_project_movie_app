@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<!--      layout:decorate="~{layout}">-->
+<head>
+    <meta charset="UTF-8">
+    <title>Fullscreen Image</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        .fullscreen-image {
+            background-image: url('/images/401.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100%;
+            width: 100%;
+        }
+
+        .bottom-right {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .bottom-right img {
+            width: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="fullscreen-image">
+    <div class="bottom-right">
+        <a th:href="@{/}">
+            <img src="/images/arrow1.png" alt="Link Image">
+        </a>
+    </div>
+</div>
+</body>
+</html>
