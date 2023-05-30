@@ -36,17 +36,17 @@ public class Movie extends BaseEntity {
     private String description;
     @ManyToMany(mappedBy = "movies", cascade = CascadeType.ALL)
     private Set<Genre> genres;
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "movies")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "movies")
     private Set<Actor> actors;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne( fetch = FetchType.LAZY)
     @JoinColumn(name = "director_id", referencedColumnName = "id")
     private Director director;
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
     private Set<Review> reviews;
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "movie_subscriber", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "subscriber_id"))
     private Set<Subscriber> subscribers;
-    @Column(name = "average_rating", precision = 3, scale = 2)
+    @Column(name = "average_rating")
     private Double averageRating;
 
     public Movie() {

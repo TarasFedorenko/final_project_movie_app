@@ -62,18 +62,21 @@ public class MovieResponseDto extends ResponseDto {
             this.actors = actors.stream().map(ActorDto::new).collect(Collectors.toSet());
         }
     }
+
     private void initReview(Movie movie) {
         Set<Review> reviews = movie.getReviews();
         if (CollectionUtils.isNotEmpty(reviews)) {
             this.reviews = reviews.stream().map(ReviewDto::new).collect(Collectors.toSet());
         }
     }
+
     private void initDirector(Movie movie) {
         Director director = movie.getDirector();
         if (director != null) {
             this.directorDto = new DirectorDto(director);
         }
     }
+
     private void initGenres(Movie movie) {
         Set<Genre> genres = movie.getGenres();
         if (CollectionUtils.isNotEmpty(genres)) {

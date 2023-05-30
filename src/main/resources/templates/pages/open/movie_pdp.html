@@ -64,7 +64,23 @@
             $("#video").simplePlayer();
         });
     </script>
+    <style>
+        .rating-container {
+            display: flex;
+            align-items: center;
+        }
 
+        .rating-value {
+            margin-right: 5px;
+        }
+
+        .rating-star {
+            width: 20px;
+            height: 20px;
+            background-image: url('/images/filled-star.png');
+            background-repeat: no-repeat;
+        }
+    </style>
 </head>
 
 <body>
@@ -379,6 +395,25 @@
                                                 </td>
                                             </tr>
                                         </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="rating-container">
+                                            <span class="rating-value"><strong>Rating: </strong></span>
+                                            &nbsp;
+                                            &nbsp;
+                                            <span th:text="${#numbers.formatDecimal(movieData.averageRating, 0, 'POINT', 2, 'COMMA')}"></span>
+                                            <span class="rating-star"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <form th:action= "@{/movies/{id}/add (id=${movieData.getId()})}" method="POST">
+                                        <input type="hidden" name="subId" th:value="${subscriber.getId()}">
+                                        <button class="btn btn-danger" type="submit">Add movie</button>
+                                    </form>
                                     </td>
                                 </tr>
                             </table>

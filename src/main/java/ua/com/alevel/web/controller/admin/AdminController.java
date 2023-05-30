@@ -19,7 +19,7 @@ import ua.com.alevel.service.SubscriberCrudService;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-    private final SubscriberCrudService  subscriberService;
+    private final SubscriberCrudService subscriberService;
     private final MovieService movieService;
     private final ActorService actorService;
     private final SubscriberFacade subscriberFacade;
@@ -46,20 +46,17 @@ public class AdminController {
         Integer directorCount = directorService.count();
         model.addAttribute("subCount", subCount);
         model.addAttribute("movieCount", movieCount);
-        model.addAttribute("actorCount",actorCount);
+        model.addAttribute("actorCount", actorCount);
         model.addAttribute("directorCount", directorCount);
         return "pages/admin/home";
     }
+
     @GetMapping("/users")
     public String usersList(Model model, WebRequest webRequest) {
         model.addAttribute("usersList", subscriberFacade.findAll(webRequest));
         return "pages/admin/users_list";
     }
-    @GetMapping("/users/{id}")
-        public String userDetails (@PathVariable Long id, Model model){
-        model.addAttribute("user", subscriberFacade.findById(id));
-        return "pages/admin/users_details";
-    }
+
     @PostMapping("/users/{id}/ban")
     public String banUser(@PathVariable Long id) {
         subscriberService.banUser(id);
@@ -71,10 +68,12 @@ public class AdminController {
         subscriberService.unbanUser(id);
         return "redirect:/admin/users";
     }
+
     @GetMapping("/review")
     public String reviewList(Model model, WebRequest webRequest) {
         model.addAttribute("reviewList", reviewResponseFacade.findAll(webRequest));
-        return "pages/admin/review_list";}
+        return "pages/admin/review_list";
+    }
 
     @GetMapping("/review/delete/{id}")
     public String delete(@PathVariable Long id) {

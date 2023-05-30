@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("ADMIN")
-public class Admin extends User{
-    public Admin(){
+public class Admin extends User {
+    public Admin() {
         super();
         setRoleType(RoleType.ROLE_ADMIN);
     }

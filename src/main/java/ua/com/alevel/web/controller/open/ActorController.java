@@ -11,11 +11,12 @@ import ua.com.alevel.facade.actor.ActorFacade;
 @Controller
 @RequestMapping("/actors")
 public class ActorController {
-   private final ActorFacade actorFacade;
+    private final ActorFacade actorFacade;
 
     public ActorController(ActorFacade actorFacade) {
         this.actorFacade = actorFacade;
     }
+
     @GetMapping
     public String plp(Model model, WebRequest webRequest) {
         model.addAttribute("actorList", actorFacade.findAll(webRequest));

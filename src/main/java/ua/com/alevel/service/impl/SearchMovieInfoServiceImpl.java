@@ -11,7 +11,6 @@ import ua.com.alevel.util.WebUtil;
 import java.util.Optional;
 
 
-
 @Service
 public class SearchMovieInfoServiceImpl implements SearchMovieInfoService {
 

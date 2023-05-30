@@ -1,9 +1,9 @@
 package ua.com.alevel.persistence.listener;
 
-import lombok.NoArgsConstructor;
+
 import ua.com.alevel.persistence.entity.movie.Movie;
 import ua.com.alevel.persistence.entity.review.Review;
-import ua.com.alevel.persistence.repository.movie.MovieRepository;
+
 
 import javax.persistence.PostLoad;
 import javax.persistence.PostPersist;

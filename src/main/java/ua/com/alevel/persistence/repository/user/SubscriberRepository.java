@@ -10,8 +10,11 @@ import java.util.List;
 public interface SubscriberRepository extends UserRepository<Subscriber> {
     @Query("SELECT COUNT(*) FROM User WHERE roleType = 'ROLE_SUBSCRIBER'")
     Integer countSubscribers();
+
     @Query("from Subscriber g join g.movies gm where gm.id =: movieId")
     List<Subscriber> findAllByMovie(Long movieId);
+
+
 
 
 

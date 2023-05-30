@@ -3,7 +3,6 @@ package ua.com.alevel.persistence.repository.movie;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import ua.com.alevel.persistence.entity.movie.Genre;
 import ua.com.alevel.persistence.entity.person.Actor;
 import ua.com.alevel.persistence.repository.BaseRepository;
 

@@ -13,7 +13,7 @@ public class ActorRequestDto {
     private String name;
     private String imageUrl;
 
-    public ActorRequestDto(Actor actor){
+    public ActorRequestDto(Actor actor) {
         this.id = actor.getId();
         this.name = actor.getFirstName() + " " + actor.getLastName();
         this.imageUrl = actor.getImageUrl();

@@ -1,6 +1,5 @@
 package ua.com.alevel.service.impl;
 
-import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -10,7 +9,11 @@ import ua.com.alevel.exception.EntityExistException;
 import ua.com.alevel.persistence.crud.CrudRepositoryHelper;
 import ua.com.alevel.persistence.datatable.DataTableRequest;
 import ua.com.alevel.persistence.datatable.DataTableResponse;
+import ua.com.alevel.persistence.entity.movie.Movie;
+import ua.com.alevel.persistence.entity.review.Review;
 import ua.com.alevel.persistence.entity.user.Subscriber;
+import ua.com.alevel.persistence.repository.movie.MovieRepository;
+import ua.com.alevel.persistence.repository.review.ReviewRepository;
 import ua.com.alevel.persistence.repository.user.SubscriberRepository;
 import ua.com.alevel.service.SubscriberCrudService;
 import ua.com.alevel.web.dto.SubscriberDto;
@@ -25,11 +28,15 @@ public class SubscriberCrudServiceImpl implements SubscriberCrudService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final SubscriberRepository subscriberRepository;
     private final CrudRepositoryHelper<Subscriber, SubscriberRepository> crudRepositoryHelper;
+    private final MovieRepository movieRepository;
 
-    public SubscriberCrudServiceImpl(BCryptPasswordEncoder bCryptPasswordEncoder, SubscriberRepository subscriberRepository, CrudRepositoryHelper<Subscriber, SubscriberRepository> crudRepositoryHelper) {
+    private final ReviewRepository reviewRepository;
+    public SubscriberCrudServiceImpl(BCryptPasswordEncoder bCryptPasswordEncoder, SubscriberRepository subscriberRepository, CrudRepositoryHelper<Subscriber, SubscriberRepository> crudRepositoryHelper, MovieRepository movieRepository, ReviewRepository reviewRepository) {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.subscriberRepository = subscriberRepository;
         this.crudRepositoryHelper = crudRepositoryHelper;
+        this.movieRepository = movieRepository;
+        this.reviewRepository = reviewRepository;
     }
 
 
@@ -98,6 +105,40 @@ public class SubscriberCrudServiceImpl implements SubscriberCrudService {
             return new SubscriberDto(subscriberOptional.get());
         }
         throw new RuntimeException("subscriber not found");
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.REPEATABLE_READ, rollbackFor = Exception.class)
+    public void addMovieToSubscriber(Long userId, Long movieId) {
+        Subscriber subscriber = subscriberRepository.findById(userId).orElseThrow(()->new RuntimeException("subscriber not found"));
+        Movie movie = movieRepository.findById(movieId).orElseThrow(()->new RuntimeException("movie not found"));
+        subscriber.getMovies().add(movie);
+        movie.getSubscribers().add(subscriber);
+        subscriberRepository.save(subscriber);
+        movieRepository.save(movie);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.REPEATABLE_READ, rollbackFor = Exception.class)
+    public void removeMovieFromSubscriber(Long subId, Long movieId) {
+        Subscriber subscriber = subscriberRepository.findById(subId).orElseThrow(()->new RuntimeException("subscriber not found"));
+        Movie movie = movieRepository.findById(movieId).orElseThrow(()->new RuntimeException("movie not found"));
+        subscriber.getMovies().remove(movie);
+        movie.getSubscribers().remove(subscriber);
+        subscriberRepository.save(subscriber);
+        movieRepository.save(movie);
+    }
+
+    @Override
+    public void removeReviewFromSubscriber(Long subId, Long reviewId) {
+        Subscriber subscriber = subscriberRepository.findById(subId).orElseThrow(()->new RuntimeException("subscriber not found"));
+        Review review = reviewRepository.findById(reviewId).orElseThrow(()->new RuntimeException("review not found"));
+        Movie movie = movieRepository.findMovieByReviewId(reviewId);
+        subscriber.getReviews().remove(review);
+        movie.getReviews().remove(review);
+        movieRepository.save(movie);
+        subscriberRepository.save(subscriber);
+        reviewRepository.save(review);
     }
 
 }

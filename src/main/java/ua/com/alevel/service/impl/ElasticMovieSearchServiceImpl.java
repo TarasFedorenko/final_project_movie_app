@@ -12,6 +12,7 @@ import org.springframework.data.elasticsearch.core.query.Query;
 import org.springframework.stereotype.Service;
 import ua.com.alevel.elastic.document.MovieIndex;
 import ua.com.alevel.service.ElasticMovieSearchService;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class ElasticMovieSearchServiceImpl implements ElasticMovieSearchService 
                         MovieIndex.class,
                         IndexCoordinates.of(MOVIE_INDEX));
         final List<String> suggestions = new ArrayList<>();
-        searchSuggestions.getSearchHits().forEach(searchHit-> suggestions.add(searchHit.getContent().getTitle()));
+        searchSuggestions.getSearchHits().forEach(searchHit -> suggestions.add(searchHit.getContent().getTitle()));
         return suggestions;
     }
 }

@@ -16,6 +16,7 @@ public class DirectorController {
     public DirectorController(DirectorFacade directorFacade) {
         this.directorFacade = directorFacade;
     }
+
     @GetMapping
     public String plp(Model model, WebRequest webRequest) {
         model.addAttribute("directorList", directorFacade.findAll(webRequest));

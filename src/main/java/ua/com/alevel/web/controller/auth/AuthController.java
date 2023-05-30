@@ -31,6 +31,7 @@ public class AuthController extends AbstractController {
         this.authValidatorFacade = authValidatorFacade;
         this.securityService = securityService;
     }
+
     @GetMapping("/")
     public String index() {
         return "index";

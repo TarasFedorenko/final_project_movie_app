@@ -25,6 +25,7 @@ public class User extends BaseEntity {
     private RoleType roleType;
     @Column(nullable = false)
     private Boolean enabled;
+
     public User() {
         super();
         this.enabled = true;

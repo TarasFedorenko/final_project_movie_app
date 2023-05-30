@@ -14,13 +14,13 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @NoArgsConstructor
-public class GenreResponseDto extends ResponseDto{
+public class GenreResponseDto extends ResponseDto {
 
     private String genreName;
     private String imageUrl;
     private Set<MovieDto> movieDto;
 
-    public GenreResponseDto(Genre genre){
+    public GenreResponseDto(Genre genre) {
         setId(genre.getId());
         setCreated(genre.getCreated());
         setUpdated(genre.getUpdated());
@@ -30,9 +30,9 @@ public class GenreResponseDto extends ResponseDto{
         initMovie(genre);
     }
 
-    private void initMovie(Genre genre){
+    private void initMovie(Genre genre) {
         Set<Movie> movies = genre.getMovies();
-        if (CollectionUtils.isNotEmpty(movies)){
+        if (CollectionUtils.isNotEmpty(movies)) {
             this.movieDto = movies.stream().map(MovieDto::new).collect(Collectors.toSet());
         }
     }

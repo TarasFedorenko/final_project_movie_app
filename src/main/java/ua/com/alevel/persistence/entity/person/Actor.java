@@ -15,7 +15,7 @@ import java.util.Set;
 @Entity
 @Table(name = "actors")
 public class Actor extends BasePerson {
-    @ManyToMany( fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "actor_movie",
             joinColumns = @JoinColumn(name = "actor_id"),

@@ -18,8 +18,8 @@ import ua.com.alevel.service.ReviewService;
 import ua.com.alevel.util.SecurityUtil;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
+
 @Service
 public class ReviewServiceImpl implements ReviewService {
 
@@ -30,7 +30,7 @@ public class ReviewServiceImpl implements ReviewService {
     private final MovieRepository movieRepository;
     private final CrudRepositoryHelper<Review, ReviewRepository> crudRepositoryHelper;
 
-    public ReviewServiceImpl(ReviewRepository reviewRepository, SubscriberRepository subscriberRepository,  MovieRepository movieRepository, CrudRepositoryHelper<Review, ReviewRepository> crudRepositoryHelper) {
+    public ReviewServiceImpl(ReviewRepository reviewRepository, SubscriberRepository subscriberRepository, MovieRepository movieRepository, CrudRepositoryHelper<Review, ReviewRepository> crudRepositoryHelper) {
         this.reviewRepository = reviewRepository;
         this.subscriberRepository = subscriberRepository;
         this.movieRepository = movieRepository;
@@ -40,7 +40,7 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     @PreAuthorize("hasRole('ROLE_SUBSCRIBER')")
     @Transactional(isolation = Isolation.REPEATABLE_READ, propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
-    public void create(Review review, Long movieId)  {
+    public void create(Review review, Long movieId) {
         Subscriber subscriber = subscriberRepository
                 .findByEmail(SecurityUtil.getUsername())
                 .orElseThrow(() -> new RuntimeException("Subscriber not found"));
@@ -53,27 +53,27 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     @Transactional(isolation = Isolation.REPEATABLE_READ, propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
-    public void update(Review entity)  {
+    public void update(Review entity) {
         crudRepositoryHelper.update(reviewRepository, entity);
     }
 
     @Override
     @Transactional(isolation = Isolation.REPEATABLE_READ, propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
-    public void delete(Long id)  {
+    public void delete(Long id) {
         crudRepositoryHelper.delete(reviewRepository, id);
-    }//TODO delete
+    }
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Review> findById(Long id)  {
+    public Optional<Review> findById(Long id) {
         return crudRepositoryHelper.findById(reviewRepository, id);
-    }//TODO findById
+    }
 
     @Override
     @Transactional(readOnly = true)
-    public DataTableResponse<Review> findAll(DataTableRequest request)  {
+    public DataTableResponse<Review> findAll(DataTableRequest request) {
         return crudRepositoryHelper.findAll(reviewRepository, request);
-    }//TODO findAll
+    }
 
     @Override
     public Collection<Review> findAll() {

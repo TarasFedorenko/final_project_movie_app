@@ -21,7 +21,8 @@ public final class WebUtil {
     public static final String DIRECTOR_PARAM = "director";
     public static final String SEARCH_MOVIE_PARAM = "searchBook";
 
-    private WebUtil() { }
+    private WebUtil() {
+    }
 
     public static DataTableRequest generateDataTableRequestByWebRequest(WebRequest request) {
         DataTableRequest dataTableRequest = new DataTableRequest();

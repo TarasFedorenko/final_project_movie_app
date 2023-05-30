@@ -14,7 +14,7 @@ import java.util.Set;
 public class Genre extends BaseEntity {
     @Column(name = "genre_name", nullable = false)
     private String genreName;
-    @Column(name="image_url")
+    @Column(name = "image_url")
     private String imageUrl;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(

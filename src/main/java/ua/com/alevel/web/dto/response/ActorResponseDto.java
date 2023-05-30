@@ -8,13 +8,14 @@ import ua.com.alevel.persistence.entity.movie.Movie;
 import ua.com.alevel.persistence.entity.person.Actor;
 import ua.com.alevel.persistence.type.Gender;
 import ua.com.alevel.web.dto.MovieDto;
+
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class ActorResponseDto extends ResponseDto{
+public class ActorResponseDto extends ResponseDto {
     private Long id;
     private String name;
     private Integer age;
@@ -23,18 +24,19 @@ public class ActorResponseDto extends ResponseDto{
     private String biography;
     private Set<MovieDto> movieDto;
 
-    public ActorResponseDto(Actor actor){
+    public ActorResponseDto(Actor actor) {
         this.id = actor.getId();
-        this.name= actor.getFirstName() + " " + actor.getLastName();
+        this.name = actor.getFirstName() + " " + actor.getLastName();
         this.age = actor.getAge();
         this.gender = actor.getGender();
         this.imageUrl = actor.getImageUrl();
-        this.biography =actor.getBiography();
+        this.biography = actor.getBiography();
         initMovie(actor);
     }
-    private void initMovie(Actor actor){
+
+    private void initMovie(Actor actor) {
         Set<Movie> movies = actor.getMovies();
-        if (CollectionUtils.isNotEmpty(movies)){
+        if (CollectionUtils.isNotEmpty(movies)) {
             this.movieDto = movies.stream().map(MovieDto::new).collect(Collectors.toSet());
         }
     }

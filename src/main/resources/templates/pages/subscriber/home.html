@@ -6,14 +6,8 @@
 <head>
     <title>Sub home</title>
 
-    <!--    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />-->
-    <!--    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />-->
-    <!--    <link href="/css/single.css" rel='stylesheet' type='text/css' />-->
+
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
-    <!--    <link rel="stylesheet" href="/css/contactstyle.css" type="text/css" media="all" />-->
-    <!--    <link rel="stylesheet" href="/css/faqstyle.css" type="text/css" media="all" />-->
-    <!--    <link href="/css/medile.css" rel='stylesheet' type='text/css' />-->
-    <!--     font-awesome icons-->
     <link rel="stylesheet" href="/css/font-awesome.min.css" />
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -28,38 +22,7 @@
     <!-- CSS files -->
     <link rel="stylesheet" href="/css/plugins.css">
     <link rel="stylesheet" href="/css/style1.css">
-    <!-- js -->
-    <!--    <script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>-->
 
-    <!--    <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700italic,700,400italic,300italic,300' rel='stylesheet' type='text/css'>-->
-    <!--    &lt;!&ndash; start-smooth-scrolling &ndash;&gt;-->
-    <!--    <script type="text/javascript" src="/js/move-top.js"></script>-->
-    <!--    <script type="text/javascript" src="/js/easing.js"></script>-->
-    <!--    <script type="text/javascript">-->
-    <!--        jQuery(document).ready(function($) {-->
-    <!--            $(".scroll").click(function(event){-->
-    <!--                event.preventDefault();-->
-    <!--                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);-->
-    <!--            });-->
-    <!--        });-->
-    <!--    </script>-->
-
-    <!--    <link href="/css/owl.carousel.css" rel="stylesheet" type="text/css" media="all">-->
-    <!--    <script src="/js/owl.carousel.js"></script>-->
-    <!--    <script>-->
-    <!--        $(document).ready(function() {-->
-    <!--            $("#owl-demo").owlCarousel({-->
-
-    <!--                autoPlay: 3000, //Set AutoPlay to 3 seconds-->
-
-    <!--                items : 5,-->
-    <!--                itemsDesktop : [640,5],-->
-    <!--                itemsDesktopSmall : [414,4]-->
-
-    <!--            });-->
-
-    <!--        });-->
-    <!--    </script>-->
 </head>
 <body id="page-top">
 
@@ -71,10 +34,10 @@
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" th:href="@{/}">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-mouse"></i>
+            <div class="rating-container">
+                <span class="rating-value"><strong>Rating Rat </strong></span>
+
             </div>
-            <div class="sidebar-brand-text mx-3">Rating Rat</div>
         </a>
 
         <!-- Divider -->
@@ -100,7 +63,7 @@
 
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/subscriber/movies}">
+            <a class="nav-link" th:href="@{/subscriber/movies/{id}(id=${subscriber.getId()})}">
                 <i class="fas fa-eye"></i>
                 <span>Watch list</span></a>
         </li>
@@ -200,7 +163,7 @@
                     <div class="col-md-9 col-sm-12 col-xs-12 ">
                         <div class="form-style-1 user-pro" action="#">
                             <form th:action="@{/subscriber/update/{id}(id=${subscriber.getId()})}" th:object="${subscriber}" method="post" class="user">
-                                <h4>01. Profile details</h4>
+                                <h4>Subscriber info</h4>
                                 <div class="row">
                                     <div class="col-md-6 form-it">
                                         <label>Username</label>

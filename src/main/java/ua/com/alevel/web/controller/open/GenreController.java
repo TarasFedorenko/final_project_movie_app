@@ -16,6 +16,7 @@ public class GenreController {
     public GenreController(GenreFacade genreFacade) {
         this.genreFacade = genreFacade;
     }
+
     @GetMapping
     public String plp(Model model, WebRequest webRequest) {
         model.addAttribute("genreList", genreFacade.findAll(webRequest));

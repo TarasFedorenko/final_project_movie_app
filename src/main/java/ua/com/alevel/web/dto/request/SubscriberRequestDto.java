@@ -10,14 +10,14 @@ import java.util.Date;
 @Setter
 @Getter
 @NoArgsConstructor
-public class SubscriberRequestDto extends RequestDto{
+public class SubscriberRequestDto extends RequestDto {
     private Long id;
     private Date created;
     private String email;
     private Boolean enabled;
 
-    public SubscriberRequestDto(Subscriber subscriber){
-        this.id= subscriber.getId();
+    public SubscriberRequestDto(Subscriber subscriber) {
+        this.id = subscriber.getId();
         this.created = subscriber.getCreated();
         this.email = subscriber.getEmail();
         this.enabled = subscriber.getEnabled();

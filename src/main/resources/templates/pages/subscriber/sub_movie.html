@@ -4,7 +4,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
-    <title>Review list page</title>
+    <title>Movie list page</title>
 
 
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
@@ -14,7 +14,12 @@
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
 
-
+    <style>
+        .small-image {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
 </head>
 <body id="page-top">
 
@@ -144,26 +149,25 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Crated date</th>
-                                <th scope="col">Updated date</th>
-                                <th scope="col">Movie</th>
+                                <th scope="col">№</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Release Year</th>
+                                <th scope="col">Director</th>
                                 <th scope="col">Rating</th>
-                                <th scope="col">Subscriber</th>
-                                <th scope="col">Review text</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr th:each="review : ${review_list}">
-                                <td th:text="${review.getId()}"/>
-                                <td th:text="${review.getCreated()}"/>
-                                <td th:text="${review.getUpdated()}"/>
-                                <td th:text="${review.getMovieDto().getTitle()}"/>
-                                <td th:text="${review.getStars()}"/>
-                                <td th:text="${review.getSubscriberDto().getEmail()}"/>
-                                <td th:text="${review.getMessage()}"/>
+                            <tbody >
+                            <tr th:each="movie, index : ${movie_list}">
+                                <td th:text="${index.index+1}"/>
+                                <td><img th:src="${movie.getImageMovie()}" alt="small-image" class="small-image"><td/>
+                                <td th:text="${movie.getTitle()}"/>
+                                <td th:text="${movie.getReleaseYear()}"/>
+                                <td th:text="${movie.getDirectorDto().getName()}"/>
+                                <td th:text="${movie.getAverageRating()}"/>
+
                                 <td>
-                                    <a th:href="@{'/subscriber/review/delete/'+ ${review.id}}" type="button" class="btn btn-danger">DELETE</a>
+                                    <a th:href="@{'/subscriber/movies/delete/'+ ${movie.id}}" type="button" class="btn btn-danger">DELETE</a>
                                 </td>
                             </tr>
                             </tbody>

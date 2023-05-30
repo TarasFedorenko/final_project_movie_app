@@ -9,12 +9,15 @@ import ua.com.alevel.persistence.datatable.DataTableRequest;
 
 import ua.com.alevel.persistence.datatable.DataTableResponse;
 import ua.com.alevel.persistence.entity.movie.Movie;
+import ua.com.alevel.persistence.entity.review.Review;
 import ua.com.alevel.service.MovieService;
 import ua.com.alevel.util.WebUtil;
 import ua.com.alevel.web.dto.request.MovieRequestDto;
 import ua.com.alevel.web.dto.response.MovieResponseDto;
 import ua.com.alevel.web.dto.response.PageData;
+import ua.com.alevel.web.dto.response.ReviewResponseDto;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -75,5 +78,11 @@ public class MovieFacadeImpl implements MovieFacade {
         PageData<MovieResponseDto> pageData = (PageData<MovieResponseDto>) WebUtil.initPageData(tableResponse);
         pageData.setItems(movies);
         return pageData;
+    }
+
+    @Override
+    public Collection<MovieResponseDto> findAllBySubscriber(Long id) {
+        Collection<Movie> movies = movieService.findBySubscriberId(id);
+        return movies.stream().map(MovieResponseDto::new).toList();
     }
 }

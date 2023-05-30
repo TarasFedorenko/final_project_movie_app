@@ -14,7 +14,7 @@ public class DirectorRequestDto {
     private String name;
     private String imageUrl;
 
-    public DirectorRequestDto(Director director){
+    public DirectorRequestDto(Director director) {
         this.id = director.getId();
         this.name = director.getFirstName() + " " + director.getLastName();
         this.imageUrl = director.getImageUrl();

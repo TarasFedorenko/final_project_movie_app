@@ -6,52 +6,14 @@
 <head>
   <title>Review list page</title>
 
-  <!--    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />-->
-  <!--    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />-->
-  <!--    <link href="/css/single.css" rel='stylesheet' type='text/css' />-->
   <link href="/css/sb-admin-2.min.css" rel="stylesheet">
-  <!--    <link rel="stylesheet" href="/css/contactstyle.css" type="text/css" media="all" />-->
-  <!--    <link rel="stylesheet" href="/css/faqstyle.css" type="text/css" media="all" />-->
-  <!--    <link href="/css/medile.css" rel='stylesheet' type='text/css' />-->
-  <!--     font-awesome icons-->
   <link rel="stylesheet" href="/css/font-awesome.min.css" />
   <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link
           href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
 
-  <!-- js -->
-  <!--    <script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>-->
 
-  <!--    <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700italic,700,400italic,300italic,300' rel='stylesheet' type='text/css'>-->
-  <!--    &lt;!&ndash; start-smooth-scrolling &ndash;&gt;-->
-  <!--    <script type="text/javascript" src="/js/move-top.js"></script>-->
-  <!--    <script type="text/javascript" src="/js/easing.js"></script>-->
-  <!--    <script type="text/javascript">-->
-  <!--        jQuery(document).ready(function($) {-->
-  <!--            $(".scroll").click(function(event){-->
-  <!--                event.preventDefault();-->
-  <!--                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);-->
-  <!--            });-->
-  <!--        });-->
-  <!--    </script>-->
-
-  <!--    <link href="/css/owl.carousel.css" rel="stylesheet" type="text/css" media="all">-->
-  <!--    <script src="/js/owl.carousel.js"></script>-->
-  <!--    <script>-->
-  <!--        $(document).ready(function() {-->
-  <!--            $("#owl-demo").owlCarousel({-->
-
-  <!--                autoPlay: 3000, //Set AutoPlay to 3 seconds-->
-
-  <!--                items : 5,-->
-  <!--                itemsDesktop : [640,5],-->
-  <!--                itemsDesktopSmall : [414,4]-->
-
-  <!--            });-->
-
-  <!--        });-->
-  <!--    </script>-->
 </head>
 <body id="page-top">
 
@@ -82,60 +44,6 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-         aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-file-movie-o"></i>
-        <span>Movies</span>
-      </a>
-      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Actions:</h6>
-          <a class="collapse-item" href="buttons.html">Create</a>
-          <a class="collapse-item" href="cards.html">Update</a>
-          <a class="collapse-item" href="cards.html">Delete</a>
-        </div>
-      </div>
-    </li>
-
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-         aria-expanded="true" aria-controls="collapseUtilities">
-        <i class="fas fa-fw fa-wrench"></i>
-        <span>Actors</span>
-      </a>
-      <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-           data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Actions:</h6>
-          <a class="collapse-item" href="utilities-color.html">Create</a>
-          <a class="collapse-item" href="utilities-border.html">Update</a>
-          <a class="collapse-item" href="utilities-animation.html">Delete</a>
-
-        </div>
-      </div>
-    </li>
-    <!-- Heading -->
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
-         aria-expanded="true" aria-controls="collapsePages">
-        <i class="fas fa-fw fa-folder"></i>
-        <span>Directors</span>
-      </a>
-      <div id="collapseOne" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Directors:</h6>
-          <a class="collapse-item" href="../../login.html">Create</a>
-          <a class="collapse-item" href="register.html">Update</a>
-          <a class="collapse-item" href="forgot-password.html">Delete</a>
-        </div>
-      </div>
-    </li>
-
     <!-- Nav Item - Charts -->
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
@@ -144,20 +52,13 @@
         <span>Users</span>
       </a>
       <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
+        <div class="bg-primary py-2 collapse-inner rounded">
           <h6 class="collapse-header">Users:</h6>
-          <a class="collapse-item" href="../../login.html">Users info</a>
-          <a class="collapse-item" href="register.html">Users messages</a>
-          <a class="collapse-item" href="forgot-password.html">Ban Hammer</a>
+          <a class="collapse-item" th:href="@{/admin/users}">Users info</a>
+          <a class="collapse-item" th:href="@{/admin/review}">Users messages</a>
+
         </div>
       </div>
-    </li>
-
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-      <a class="nav-link" href="tables.html">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Tables</span></a>
     </li>
 
     <!-- Divider -->
@@ -372,16 +273,6 @@
                 <td th:text="${review.getStars()}"/>
                 <td th:text="${review.getSubscriberDto().getEmail()}"/>
                 <td th:text="${review.getMessage()}"/>
-<!--                <td>-->
-<!--                  <form th:if="${not subs.enabled}" th:action="@{/admin/users/{id}/unban(id=${subs.getId()})}"  method="post">-->
-<!--                    <button type="submit" th:href="@{/admin/users}">UNBAN</button>-->
-<!--                  </form>-->
-<!--                </td>-->
-<!--                <td>-->
-<!--                  <form th:if="${subs.enabled}" th:action="@{/admin/users/{id}/ban(id=${subs.getId()})}"  method="post">-->
-<!--                    <button type="submit" th:href="@{/admin/users}">BAN</button>-->
-<!--                  </form>-->
-<!--                </td>-->
                 <td>
                   <a th:href="@{'/admin/review/delete/' + ${review.getId()}}" type="button" class="btn btn-danger">DELETE</a>
                 </td>

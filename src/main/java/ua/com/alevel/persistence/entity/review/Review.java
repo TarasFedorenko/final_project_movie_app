@@ -19,17 +19,17 @@ public class Review extends BaseEntity {
     @Column(name = "stars", nullable = false)
     public Double stars;
 
-    @ManyToOne( fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "subscriber_id", referencedColumnName = "id")
     private Subscriber subscriber;
 
-    @ManyToOne( fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "movie_id", referencedColumnName = "id")
     private Movie movie;
 
-    public Review(){
+    public Review() {
         super();
-        this.message="";
+        this.message = "";
         this.stars = 0.0;
     }
 

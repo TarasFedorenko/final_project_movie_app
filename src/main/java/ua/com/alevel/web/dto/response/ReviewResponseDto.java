@@ -10,7 +10,7 @@ import ua.com.alevel.web.dto.SubscriberDto;
 
 @Getter
 @Setter
-public class ReviewResponseDto extends ResponseDto{
+public class ReviewResponseDto extends ResponseDto {
 
     private String message;
     private Double stars;
@@ -18,7 +18,7 @@ public class ReviewResponseDto extends ResponseDto{
     private MovieDto movieDto;
 
 
-    public ReviewResponseDto(Review review){
+    public ReviewResponseDto(Review review) {
         setId(review.getId());
         setCreated(review.getCreated());
         setUpdated(review.getUpdated());
@@ -29,15 +29,17 @@ public class ReviewResponseDto extends ResponseDto{
         initMovie(review);
 
     }
-    private void initSubscriber(Review review){
+
+    private void initSubscriber(Review review) {
         Subscriber subscriber = review.getSubscriber();
-        if(subscriber !=null){
+        if (subscriber != null) {
             this.subscriberDto = new SubscriberDto(subscriber);
         }
     }
-    private void initMovie(Review review){
+
+    private void initMovie(Review review) {
         Movie movie = review.getMovie();
-        if(movie !=null){
+        if (movie != null) {
             this.movieDto = new MovieDto(movie);
         }
     }
