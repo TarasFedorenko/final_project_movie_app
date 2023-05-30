@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                .antMatchers("/css/**", "/js/**", "/registration", "/movies/**", "/", "/static/**", "/images/**", "/fonts/**", "/directors/**", "/actors/**", "/genres/**", "/list-css/**", "/list-js/**", "/news-css/**", "/actors_plp/**", "/actors_pdp/**").permitAll()
+                .antMatchers("/css/**", "/js/**", "/registration", "/movies/**", "/", "/static/**", "/images/**", "/fonts/**", "/directors/**", "/actors/**", "/genres/**", "/list-css/**", "/list-js/**", "/news-css/**", "/actors_plp/**", "/actors_pdp/**", "/news/**", "/az_list/**", "/faq/**").permitAll()
                 .antMatchers("/home/**").access("hasAnyRole('ROLE_ADMIN', 'ROLE_SUBSCRIBER')")
                 .antMatchers("/subscriber/**").access("hasRole('ROLE_SUBSCRIBER')")
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
