@@ -37,6 +37,4 @@ public class DirectorServiceImpl implements DirectorService {
     public Integer count() {
         return directorRepository.countDirectors();
     }
-
-
 }

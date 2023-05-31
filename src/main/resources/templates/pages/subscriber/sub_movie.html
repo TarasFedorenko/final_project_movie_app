@@ -160,12 +160,11 @@
                             <tbody >
                             <tr th:each="movie, index : ${movie_list}">
                                 <td th:text="${index.index+1}"/>
-                                <td><img th:src="${movie.getImageMovie()}" alt="small-image" class="small-image"><td/>
+                                <td><img th:src="${movie.getImageMovie()}" alt="small-image" class="small-image"/>
                                 <td th:text="${movie.getTitle()}"/>
                                 <td th:text="${movie.getReleaseYear()}"/>
                                 <td th:text="${movie.getDirectorDto().getName()}"/>
                                 <td th:text="${movie.getAverageRating()}"/>
-
                                 <td>
                                     <a th:href="@{'/subscriber/movies/delete/'+ ${movie.id}}" type="button" class="btn btn-danger">DELETE</a>
                                 </td>

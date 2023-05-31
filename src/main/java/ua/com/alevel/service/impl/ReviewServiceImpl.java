@@ -25,8 +25,6 @@ public class ReviewServiceImpl implements ReviewService {
 
     private final ReviewRepository reviewRepository;
     private final SubscriberRepository subscriberRepository;
-
-
     private final MovieRepository movieRepository;
     private final CrudRepositoryHelper<Review, ReviewRepository> crudRepositoryHelper;
 
@@ -80,7 +78,6 @@ public class ReviewServiceImpl implements ReviewService {
         return reviewRepository.findAll();
     }
 
-
     @Override
     public Review findByMovie(Long movieId) {
         return reviewRepository.findByMovieId(movieId);
@@ -90,6 +87,4 @@ public class ReviewServiceImpl implements ReviewService {
     public Collection<Review> findBySubscriberId(Long id) {
         return reviewRepository.findAllBySubscriberId(id);
     }
-
-
 }

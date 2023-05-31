@@ -37,7 +37,6 @@ public class MovieServiceImpl implements MovieService {
         this.subscriberRepository = subscriberRepository;
     }
 
-
     @Override
     @Transactional(isolation = Isolation.REPEATABLE_READ, propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public void create(Movie entity) {
@@ -86,6 +85,4 @@ public class MovieServiceImpl implements MovieService {
         Review review = reviewRepository.getById(reviewId);
         return review.getMovie();
     }
-
-
 }
