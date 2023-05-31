@@ -45,7 +45,24 @@
 		});
 	 
 	}); 
-</script> 
+</script>
+	<style>
+		.rating-container {
+			display: flex;
+			align-items: center;
+		}
+
+		.rating-value {
+			margin-right: 5px;
+		}
+
+		.rating-star {
+			width: 20px;
+			height: 20px;
+			background-image: url('/images/filled-star.png');
+			background-repeat: no-repeat;
+		}
+	</style>
 </head>
 <body>
 <!-- header -->
@@ -242,14 +259,12 @@
 									</div>
 									<div class="mid-2 agile_mid_2_home">
 										<a th:text="${movie.getReleaseYear()}">Year</a>
-										<div class="block-stars">
-											<ul class="w3l-ratings">
-												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											</ul>
+										<div class="rating-container">
+											<span class="rating-value"><strong>Rating: </strong></span>
+											&nbsp;
+											&nbsp;
+											<span th:text="${#numbers.formatDecimal(movie.averageRating, 0, 'POINT', 2, 'COMMA')}"></span>
+											<span class="rating-star"></span>
 										</div>
 										<div class="clearfix"></div>
 									</div>
